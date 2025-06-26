@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoGest - Gestão para Oficinas</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="light-mode">
+    <div class="container">
+        <header>
+            <div class="logo" id="logoButton">
+                <i class="fas fa-tools"></i>
+                <h1>AutoGest</h1>
+            </div>
+            <div class="dark-mode-toggle">
+                <button id="darkModeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <nav class="sidebar">
+            <ul>
+                <li><a href="#dashboard" class="nav-link"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#clientes" class="nav-link"><i class="fas fa-users"></i> Clientes</a></li>
+                <li><a href="#veiculos" class="nav-link"><i class="fas fa-car"></i> Veículos</a></li>
+                <li><a href="#ordens" class="nav-link"><i class="fas fa-clipboard-list"></i> Ordens de Serviço</a></li>
+                <li><a href="#carros" class="nav-link"><i class="fas fa-car-alt"></i> Consulta Carros</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="login" class="active-section">
+                <div class="login-section">
+                    <h2>Login</h2>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="username">Usuário:</label>
+                            <input type="text" id="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Senha:</label>
+                            <div class="password-input">
+                                <input type="password" id="password" required>
+                                <button type="button" id="togglePassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="reset" class="btn btn-secondary">Limpar</button>
+                            <button type="submit" class="btn">Entrar</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <section id="dashboard">
+                <h2>Dashboard</h2>
+                <div class="dashboard-cards">
+                    <div class="dashboard-card" data-target="relatorios">
+                        <i class="fas fa-chart-pie"></i>
+                        <h3>Relatórios</h3>
+                        <p>Análises</p>
+                    </div>
+                    <div class="dashboard-card" data-target="financeiro">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <h3>Financeiro</h3>
+                        <p>Controle</p>
+                    </div>
+                    <div class="dashboard-card" data-target="estoque">
+                        <i class="fas fa-boxes"></i>
+                        <h3>Estoque</h3>
+                        <p>Peças</p>
+                    </div>
+                    <div class="dashboard-card" id="weatherCard">
+                        <i class="fas fa-cloud-sun"></i>
+                        <h3>Clima</h3>
+                        <p id="weatherInfo">Carregando...</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="clientes">
+                <h2>Clientes</h2>
+                <div class="table-container">
+                    <div class="table-header">
+                        <div class="search-box">
+                            <input type="text" id="searchClient" placeholder="Buscar cliente...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <button id="addCliente" class="btn-add"><i class="fas fa-plus"></i> Novo Cliente</button>
+                    </div>
+                    <table id="clientesTable" class="display">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Telefone</th>
+                                <th>E-mail</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clientesBody">
+
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="veiculos">
+                <h2>Veículos</h2>
+                <div class="table-container">
+                    <div class="table-header">
+                        <div class="search-box">
+                            <input type="text" id="searchVehicle" placeholder="Buscar veículo...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <button id="addVeiculo" class="btn-add"><i class="fas fa-plus"></i> Novo Veículo</button>
+                    </div>
+                    <table id="veiculosTable" class="display">
+                        <thead>
+                            <tr>
+                                <th>Placa</th>
+                                <th>Modelo</th>
+                                <th>Ano</th>
+                                <th>Proprietário</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="veiculosBody">
+
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="ordens">
+                <h2>Ordens de Serviço</h2>
+                <div class="table-container">
+                    <div class="table-header">
+                        <button id="addOrdem" class="btn-add"><i class="fas fa-plus"></i> Nova OS</button>
+                    </div>
+                    <table id="ordensTable" class="display">
+                        <thead>
+                            <tr>
+                                <th>Nº OS</th>
+                                <th>Veículo</th>
+                                <th>Cliente</th>
+                                <th>Data</th>
+                                <th>Status</th>
+                                <th>Valor (R$)</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordensBody">
+
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="carros">
+                <h2>Consulta de Carros</h2>
+                <div class="search-container">
+                    <input type="text" id="carroSearch" placeholder="Digite o modelo do carro (ex: Civic, Corolla)...">
+                    <button id="searchCarro" class="btn"><i class="fas fa-search"></i> Buscar</button>
+                </div>
+                <div id="carros-container" class="carros-grid"></div>
+            </section>
+
+            <section id="relatorios">
+                <h2>Relatórios</h2>
+                <div class="simple-section">
+                    <p>Área para geração de relatórios e análises gerenciais.</p>
+                    <div class="chart-placeholder">
+                        <p>Gráficos e estatísticas serão exibidos aqui</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="financeiro">
+                <h2>Financeiro</h2>
+                <div class="simple-section">
+                    <p>Controle financeiro e fluxo de caixa.</p>
+                    <div class="financial-summary">
+                        <div class="summary-card">
+                            <h3>Faturamento Mensal</h3>
+                            <p>R$ 25.000,00</p>
+                        </div>
+                        <div class="summary-card">
+                            <h3>Despesas</h3>
+                            <p>R$ 18.000,00</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="estoque">
+                <h2>Controle de Estoque</h2>
+                <div class="simple-section">
+                    <p>Gerenciamento de peças e materiais em estoque.</p>
+                    <div class="inventory-status">
+                        <div class="status-item">
+                            <h3>Peças em estoque</h3>
+                            <p>142 itens</p>
+                        </div>
+                        <div class="status-item">
+                            <h3>Peças críticas</h3>
+                            <p>8 itens</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer>
+            <p>&copy; 2025 AutoGest - Sistema de Gestão para Oficinas</p>
+        </footer>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modalTitle">Adicionar Cliente</h2>
+            <div id="modalBody">
+                <form id="modalForm">
+                    <div class="form-group">
+                        <label for="modalNome">Nome:</label>
+                        <input type="text" id="modalNome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="modalTelefone">Telefone:</label>
+                        <input type="text" id="modalTelefone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="modalEmail">E-mail:</label>
+                        <input type="email" id="modalEmail" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="reset" class="btn btn-secondary">Limpar</button>
+                        <button type="submit" class="btn">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
