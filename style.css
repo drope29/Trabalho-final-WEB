@@ -1,6 +1,6 @@
 :root {
     --bg-color: #f4f4f4;
-    --text-color: #333;
+    --text-color: black;
     --header-bg: #2c3e50;
     --header-text: #fff;
     --sidebar-bg: #34495e;
@@ -149,8 +149,15 @@ section.active-section {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Login Section */
@@ -310,7 +317,7 @@ section.active-section {
 
 .chart-placeholder {
     height: 300px;
-    background: rgba(0,0,0,0.05);
+    background: rgba(0, 0, 0, 0.05);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -318,26 +325,30 @@ section.active-section {
     margin-top: 1rem;
 }
 
-.financial-summary, .inventory-status {
+.financial-summary,
+.inventory-status {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
     margin-top: 1.5rem;
 }
 
-.summary-card, .status-item {
-    background: rgba(0,0,0,0.05);
+.summary-card,
+.status-item {
+    background: rgba(0, 0, 0, 0.05);
     padding: 1.5rem;
     border-radius: var(--border-radius);
     text-align: center;
 }
 
-.summary-card h3, .status-item h3 {
+.summary-card h3,
+.status-item h3 {
     margin-bottom: 0.5rem;
     font-size: 1rem;
 }
 
-.summary-card p, .status-item p {
+.summary-card p,
+.status-item p {
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--primary-color);
@@ -387,10 +398,15 @@ table {
     border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
     padding: 12px 15px;
     text-align: left;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+td {
+    color: black;
 }
 
 th {
@@ -404,7 +420,6 @@ tr:hover {
     background-color: rgba(0, 0, 0, 0.05);
 }
 
-/* Botões de ação */
 .btn-action {
     background: none;
     border: none;
@@ -434,11 +449,10 @@ tr:hover {
 }
 
 .btn-action:hover {
-    background: rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.1);
     transform: scale(1.1);
 }
 
-/* Status das OS */
 .status {
     padding: 5px 10px;
     border-radius: 20px;
@@ -464,7 +478,6 @@ tr:hover {
     background-color: var(--primary-color);
 }
 
-/* Seção de Peças */
 .search-container {
     display: flex;
     gap: 10px;
@@ -481,7 +494,6 @@ tr:hover {
     max-width: 500px;
 }
 
-/* Estilos para a seção de carros */
 .carros-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -504,7 +516,7 @@ tr:hover {
 .carro-card h3 {
     color: var(--primary-color);
     margin-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     padding-bottom: 0.5rem;
 }
 
@@ -525,7 +537,6 @@ tr:hover {
     color: var(--text-color);
 }
 
-/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -534,7 +545,7 @@ tr:hover {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
@@ -542,7 +553,7 @@ tr:hover {
     margin: 5% auto;
     padding: 2rem;
     border-radius: var(--border-radius);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     width: 80%;
     max-width: 600px;
     position: relative;
@@ -556,7 +567,54 @@ tr:hover {
     cursor: pointer;
 }
 
-/* Footer */
+#clima-container {
+    background-color: var(--card-bg);
+    padding: 2rem 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    max-width: 500px;
+    margin: 2rem auto;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+#clima-container .loading-message,
+#clima-container .error-message {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    padding: 2rem 0;
+}
+
+.clima-header h3 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.clima-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.clima-main img {
+    width: 120px;
+    height: 120px;
+}
+
+.clima-main .temperatura {
+    font-size: 6rem;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.clima-details {
+    display: none;
+}
+
 footer {
     grid-area: footer;
     background: var(--header-bg);
@@ -566,7 +624,6 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
     .container {
         grid-template-areas:
@@ -594,7 +651,8 @@ footer {
         width: 100%;
     }
 
-    .financial-summary, .inventory-status {
+    .financial-summary,
+    .inventory-status {
         grid-template-columns: 1fr;
     }
 }
@@ -603,11 +661,11 @@ footer {
     .dashboard-cards {
         grid-template-columns: 1fr;
     }
-    
+
     .search-container {
         flex-direction: column;
     }
-    
+
     .btn-add {
         width: 100%;
     }
